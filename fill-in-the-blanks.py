@@ -4,7 +4,7 @@
 # function flow: player_name ---> attempts ----> main() --> start_game() --> Easy Medium or Hard() --> play_game --> check_for_match --> guess-word --> word_in_pos --> user_attempts
 
 # ======================================================================================
-# player_name function asks for the user's name 
+# player_name function ask for the user's name 
 def player_name(): 
     print """So you want to play a game....
     But first who am I playing with?"""

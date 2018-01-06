@@ -206,9 +206,9 @@ phrases = {0: {"fill_in_blank": """During Monday night a popular television show
             "anagram": ["1st_word", "2nd_word", "3rd_word", "4th_word"],
             "solution": ["comes", "with", "the", "fall"]
         }
-} 
-        
-main() 
+}
+
+main()
 
 
 

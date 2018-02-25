@@ -1,7 +1,9 @@
 
 # ======================================================================================
                         # Functions Section
-# function flow: player_name ---> attempts ----> main() --> start_game() --> Easy Medium or Hard() --> play_game --> check_for_match --> guess-word --> word_in_pos --> user_attempts
+# Program flow: Enter player_name --> Enter attempts --> main() --> start_game() 
+# --> Easy Medium or Hard() --> play_game --> check_for_match
+# --> guess-word --> word_in_pos --> user_attempts
 
 # ======================================================================================
 # player_name function ask for the user's name 
@@ -18,7 +20,7 @@ def player_name():
             break
     return name
 
-#this function asks the user how many attempts they would like to have before they have to start over.     
+#this function asks the user how many attempts they would like to have before they have to start over     
 def attempts():
     tries = raw_input("How many attempts would you like before you lose? ")
     if tries == str(0):
@@ -29,7 +31,8 @@ def attempts():
             tries = raw_input("How many attempts would you like before you lose? ")
         return int(tries)
     
-# Main function starts the game, triggers the start_game function. Once start_game returns the difficulty, the corresponding difficulty level begins. 
+# Main function starts the game, triggers the start_game function.
+# Once start_game returns the difficulty, the corresponding difficulty level begins. 
 def main():
     difficulty = start_game()
     if difficulty == 'Easy':
@@ -112,10 +115,12 @@ def word_in_pos(word, placeholder_for_blanks):
             return pos
     return None    
 
-# Takes the expression and goes through each word checking to see if there is a match by calling the word_in_pos function. If there is a prompt asks the user to fill in the blank.  
+# Takes the expression and goes through each word checking to see if there is a match by calling the word_in_pos function.
+# If there is a prompt asks the user to fill in the blank.  
 # The function user_attempts is then called checking to see if the user has gone over their limit on tries. 
-def guess_word(expression, store_anagrams, store_solution, replaced):
+def guess_word(expression, store_anagrams, store_solution):
     grab_next = 0
+    replaced = []
     for word in expression:
         replacement = word_in_pos(word, placeholder_for_blanks)
         if replacement != None:
@@ -132,12 +137,13 @@ def guess_word(expression, store_anagrams, store_solution, replaced):
             replaced.append(word)
     
 # word_in_pos function is spliting the expression by blank spaces. And then calls the function interchange_word. 
-def check_for_match(expression, replaced, store_anagrams, store_solution):
+def check_for_match(expression, store_anagrams, store_solution):
     phrase = expression['fill_in_blank']
     expression = phrase.split()
-    guess_word(expression, store_anagrams, store_solution, replaced)
+    guess_word(expression, store_anagrams, store_solution)
 
-# play_game function is retrieving the key words from the dictionary and then appends them into a list. The phrase from the dictionary is also being retrieved and then split up.
+# play_game function is retrieving the key words from the dictionary and then appends them into a list. The phrase from the dictionary
+# is also being retrieved and then split up.
 # the check_for_match function is then called. 
 def play_game(expression, placeholder_for_blanks):
     word_to_anagram = expression['anagram']
@@ -148,8 +154,7 @@ def play_game(expression, placeholder_for_blanks):
     store_solution = []
     for word in word_to_solution:
         store_solution.append(word)
-    replaced = []
-    check_for_match(expression, replaced, store_anagrams, store_solution)
+    check_for_match(expression, store_anagrams, store_solution)
 
 # =====================================================================================
                         # Global Variables / Intro
